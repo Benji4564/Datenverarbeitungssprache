@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Deutsch-Python",
+  "scopeName": "source.dpy",
+  "patterns": [
+    { "include": "#kommentare" },
+    { "include": "#zeichenketten" },
+    { "include": "#zahlen" },
+    { "include": "#schluesselwoerter" },
+    { "include": "#konstanten" },
+    { "include": "#funktionsdefinition" },
+    { "include": "#klassendefinition" }
+  ],
+  "repository": {
+    "kommentare": {
+      "patterns": [
+        { "name": "comment.line.number-sign.dpy", "match": "#.*$" }
+      ]
+    },
+    "zeichenketten": {
+      "patterns": [
+        { "name": "string.quoted.double.dpy", "begin": "\"\"\"", "end": "\"\"\"" },
+        { "name": "string.quoted.single.dpy", "begin": "'''", "end": "'''" },
+        {
+          "name": "string.quoted.double.dpy",
+          "begin": "f?\"",
+          "end": "\"",
+          "patterns": [{ "name": "constant.character.escape.dpy", "match": "\\\\." }]
+        },
+        {
+          "name": "string.quoted.single.dpy",
+          "begin": "f?'",
+          "end": "'",
+          "patterns": [{ "name": "constant.character.escape.dpy", "match": "\\\\." }]
+        }
+      ]
+    },
+    "zahlen": {
+      "patterns": [
+        { "name": "constant.numeric.dpy", "match": "\\b\\d+(\\.\\d+)?\\b" }
+      ]
+    },
+    "konstanten": {
+      "patterns": [
+        { "name": "constant.language.dpy", "match": "\\b(Wahr|Falsch|Nichts)\\b" }
+      ]
+    },
+    "schluesselwoerter": {
+      "patterns": [
+        {
+          "name": "keyword.control.dpy",
+          "match": "\\b(wenn|sonstwenn|sonst|für|während|abbrechen|weitermachen|versuche|außer|schließlich|werfe|gib_zurück|weiter|liefere|mit|importiere|von|als|nichtlokal|global|lambda|lösche|versichere|asynchron|erwarte|in)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.dpy",
+          "match": "\\b(und|oder|nicht|ist)\\b"
+        }
+      ]
+    },
+    "funktionsdefinition": {
+      "match": "\\b(funktion)\\s+([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.control.dpy" },
+        "2": { "name": "entity.name.function.dpy" }
+      }
+    },
+    "klassendefinition": {
+      "match": "\\b(klasse)\\s+([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.control.dpy" },
+        "2": { "name": "entity.name.class.dpy" }
+      }
+    }
+  }
+}
