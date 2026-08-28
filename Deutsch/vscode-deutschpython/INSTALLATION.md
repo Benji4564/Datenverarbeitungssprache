@@ -93,6 +93,88 @@ neu eingelesen).
 
 ---
 
+## Erweiterung aktualisieren
+
+Wenn sich `package.json`, `extension.js`, die Grammatik-Datei o. ä. geändert
+haben (z. B. weil neue Schlüsselwörter dazugekommen sind), muss VS Code die
+neue Version einlesen. Wie das geht, hängt davon ab, welchen Weg du bei der
+Installation gewählt hast.
+
+### Update bei Weg 1 (Install from Location)
+
+Der schnellste Weg: „Install from Location..." legt bei Ordnern normaler-
+weise einen **symbolischen Link** auf `Deutsch/vscode-deutschpython` an,
+statt die Dateien zu kopieren. Das heißt, Änderungen an den Dateien in
+diesem Ordner werden automatisch übernommen – du musst die Erweiterung
+**nicht neu installieren**:
+
+1. Dateien wie gewohnt bearbeiten (bzw. `git pull`, falls die Änderungen
+   aus dem Repository kommen).
+2. Befehlspalette → **„Developer: Reload Window"** (oder VS Code einmal
+   schließen und neu öffnen).
+
+Falls die Änderungen danach nicht sichtbar sind (manche VS-Code-Versionen
+kopieren statt zu verlinken), führe „Install from Location..." aus Weg 1
+einfach erneut aus – ein erneuter Import überschreibt die alte Kopie.
+
+### Update bei Weg 2 (.vsix)
+
+Hier musst du neu packen und neu installieren:
+
+1. Versionsnummer in `Deutsch/vscode-deutschpython/package.json` erhöhen
+   (Feld `"version"`, z. B. `0.1.0` → `0.1.1`). Das ist wichtig – VS Code
+   erkennt eine neue Version am geänderten Versionsstring, nicht am
+   Dateiinhalt.
+2. Neu packen:
+   ```bash
+   cd Deutsch/vscode-deutschpython
+   vsce package --allow-missing-repository
+   ```
+3. Installieren:
+   ```bash
+   code --install-extension deutschpython-0.1.1.vsix
+   ```
+   (Passe die Versionsnummer im Dateinamen an. Alternativ über die GUI:
+   Extensions-Ansicht → `...`-Menü → „Install from VSIX...".)
+4. Befehlspalette → **„Developer: Reload Window"**.
+
+Falls VS Code die alte Version behält (z. B. weil du die Versionsnummer
+vergessen hast zu erhöhen): die Erweiterung in der Extensions-Ansicht
+suchen → **Uninstall** → VS Code neu starten → neue `.vsix` installieren.
+
+### Update bei Weg 3 (manuelles Kopieren)
+
+1. Alten Ordner löschen und durch den aktuellen Stand ersetzen:
+
+   **Linux/Mac:**
+   ```bash
+   rm -rf ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.1.0
+   cp -r Deutsch/vscode-deutschpython ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.1.0
+   ```
+
+   **Windows (PowerShell):**
+   ```powershell
+   Remove-Item -Recurse -Force "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.1.0"
+   Copy-Item -Recurse Deutsch\vscode-deutschpython "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.1.0"
+   ```
+2. VS Code **vollständig beenden und neu starten** (ein reines „Reload
+   Window" reicht bei dieser Methode nicht immer aus, weil der
+   Erweiterungs-Ordner nur beim Programmstart neu eingelesen wird).
+
+### Installierte Version prüfen / doppelte Versionen aufräumen
+
+```bash
+code --list-extensions --show-versions | grep -i deutschpython
+```
+
+Taucht `deutschpython` mehrfach mit unterschiedlichen IDs auf (z. B. weil
+du zwischendurch verschiedene Wege ausprobiert hast), über die Extensions-
+Ansicht (`Strg+Umschalt+X`) nach „Deutsch-Python" suchen und überzählige
+Einträge mit **Uninstall** entfernen, bevor du neu installierst – sonst
+kann es sein, dass VS Code die falsche (alte) Version aktiv hält.
+
+---
+
 ## Überprüfen, ob es funktioniert hat
 
 1. `Deutsch/beispiele/hallo_welt.dpy` in VS Code öffnen.
