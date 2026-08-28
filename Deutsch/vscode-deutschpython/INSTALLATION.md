@@ -48,7 +48,7 @@ Version über die normale Extensions-Ansicht.
    cd Deutsch/vscode-deutschpython
    vsce package --allow-missing-repository
    ```
-   Das erzeugt eine Datei `deutschpython-0.1.0.vsix` in diesem Ordner.
+   Das erzeugt eine Datei `deutschpython-0.2.0.vsix` in diesem Ordner.
 4. In VS Code: Extensions-Ansicht öffnen (`Strg+Umschalt+X`).
 5. Oben im Extensions-Panel auf das `...`-Menü klicken →
    **„Install from VSIX..."**.
@@ -59,7 +59,7 @@ Version über die normale Extensions-Ansicht.
 die grafische Oberfläche:
 
 ```bash
-code --install-extension Deutsch/vscode-deutschpython/deutschpython-0.1.0.vsix
+code --install-extension Deutsch/vscode-deutschpython/deutschpython-0.2.0.vsix
 ```
 
 (setzt voraus, dass der `code`-Befehl in deinem Terminal verfügbar ist –
@@ -78,13 +78,13 @@ Erweiterungen lädt. Der Zielordnername muss dem Muster
 **Linux/Mac:**
 ```bash
 mkdir -p ~/.vscode/extensions
-cp -r Deutsch/vscode-deutschpython ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.1.0
+cp -r Deutsch/vscode-deutschpython ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.2.0
 ```
 
 **Windows (PowerShell):**
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.vscode\extensions"
-Copy-Item -Recurse Deutsch\vscode-deutschpython "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.1.0"
+Copy-Item -Recurse Deutsch\vscode-deutschpython "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.2.0"
 ```
 
 Danach VS Code **vollständig beenden und neu starten** (nicht nur
@@ -148,14 +148,14 @@ suchen → **Uninstall** → VS Code neu starten → neue `.vsix` installieren.
 
    **Linux/Mac:**
    ```bash
-   rm -rf ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.1.0
-   cp -r Deutsch/vscode-deutschpython ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.1.0
+   rm -rf ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.2.0
+   cp -r Deutsch/vscode-deutschpython ~/.vscode/extensions/deutschpython-lokal.deutschpython-0.2.0
    ```
 
    **Windows (PowerShell):**
    ```powershell
-   Remove-Item -Recurse -Force "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.1.0"
-   Copy-Item -Recurse Deutsch\vscode-deutschpython "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.1.0"
+   Remove-Item -Recurse -Force "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.2.0"
+   Copy-Item -Recurse Deutsch\vscode-deutschpython "$env:USERPROFILE\.vscode\extensions\deutschpython-lokal.deutschpython-0.2.0"
    ```
 2. VS Code **vollständig beenden und neu starten** (ein reines „Reload
    Window" reicht bei dieser Methode nicht immer aus, weil der

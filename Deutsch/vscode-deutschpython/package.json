@@ -2,7 +2,7 @@
   "name": "deutschpython",
   "displayName": "Deutsch-Python",
   "description": "Syntax-Hervorhebung und Ausführung für .dpy-Dateien (Python mit deutschen Schlüsselwörtern), ohne dass der Python-Sprachserver falsche Fehler anzeigt.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "deutschpython-lokal",
   "engines": { "vscode": "^1.75.0" },
   "categories": ["Programming Languages"],
