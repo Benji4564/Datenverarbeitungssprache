@@ -17,6 +17,12 @@ einem Terminal ausführt.
 
 ## Installation (lokal, ohne Marketplace)
 
+Ausführliche Schritt-für-Schritt-Anleitung mit mehreren Alternativen
+(auch für den Fall, dass „Install from Location...“ bei dir nicht
+existiert): siehe [`INSTALLATION.md`](INSTALLATION.md).
+
+Kurzfassung:
+
 1. `deutschpython` installieren, damit der `dpy`-Befehl existiert:
    ```
    cd ..

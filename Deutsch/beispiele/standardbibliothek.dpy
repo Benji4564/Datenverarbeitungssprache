@@ -1,0 +1,15 @@
+von deutschpython.stdlib importiere mathematik, zufall, datum, sammlungen
+von deutschpython.vokabular importiere drucke
+
+wenn __name__ == "__main__":
+    drucke("Wurzel aus 2 =", mathematik.wurzel(2))
+    drucke("5! =", mathematik.fakultät(5))
+
+    zufall.setze_startwert(1)
+    drucke("Zufallszahl 1-6:", zufall.ganzzahl(1, 6))
+
+    drucke("Heute ist:", datum.heute())
+
+    zaehler = sammlungen.Zähler("mississippi")
+    für buchstabe, anzahl in zaehler.most_common(3):
+        drucke(f"{buchstabe}: {anzahl}x")
