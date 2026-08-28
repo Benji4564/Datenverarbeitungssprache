@@ -4,6 +4,12 @@
   "description": "Syntax-Hervorhebung und Ausführung für .dpy-Dateien (Python mit deutschen Schlüsselwörtern), ohne dass der Python-Sprachserver falsche Fehler anzeigt.",
   "version": "0.2.0",
   "publisher": "deutschpython-lokal",
+  "license": "PSF-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Benji4564/Datenverarbeitungssprache",
+    "directory": "Deutsch/vscode-deutschpython"
+  },
   "engines": { "vscode": "^1.75.0" },
   "categories": ["Programming Languages"],
   "activationEvents": ["onLanguage:deutschpython"],
