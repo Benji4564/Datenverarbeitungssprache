@@ -1,0 +1,33 @@
+importa math
+ex bilingualpython.vokabular.latein importa scribe
+
+classis Salutatio:
+    functio __init__(se, nomen):
+        se.nomen = nomen
+
+    functio dic(se):
+        si se.nomen:
+            redde f"Salve, {se.nomen}!"
+        aliter:
+            redde "Salve, Mundus!"
+
+
+functio factorialis(n):
+    si n < 0:
+        iace ValueError("n debet >= 0 esse")
+    resultatum = 1
+    pro i in range(2, n + 1):
+        resultatum = resultatum * i
+    redde resultatum
+
+
+si __name__ == "__main__":
+    g = Salutatio("Mundus")
+    scribe(g.dic())
+    scribe("5! =", factorialis(5))
+    scribe("Radix ex 2 =", math.sqrt(2))
+
+    tenta:
+        factorialis(-1)
+    excipe ValueError ut error:
+        scribe("Error captus:", error)

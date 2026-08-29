@@ -1,0 +1,12 @@
+ex bilingualpython.stdlib.latein importa mathematica, sors, dies
+ex bilingualpython.vokabular.latein importa scribe
+
+
+si __name__ == "__main__":
+    scribe("Radix ex 2 =", mathematica.radix(2))
+    scribe("5! =", mathematica.factorialis(5))
+
+    sors.pone_semen(1)
+    scribe("Numerus aleatorius 1-6:", sors.integer(1, 6))
+
+    scribe("Hodie est:", dies.hodie())

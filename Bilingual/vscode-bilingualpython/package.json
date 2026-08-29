@@ -1,0 +1,64 @@
+{
+  "name": "bilingualpython",
+  "displayName": "Bilingual-Python",
+  "description": "Syntax-Hervorhebung und Ausführung für .dpy- (Deutsch) und .lpy-Dateien (Latein) – Python mit fremdsprachigen Schlüsselwörtern, ohne dass der Python-Sprachserver falsche Fehler anzeigt.",
+  "version": "0.3.0",
+  "publisher": "bilingualpython-lokal",
+  "license": "PSF-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Benji4564/Datenverarbeitungssprache",
+    "directory": "Bilingual/vscode-bilingualpython"
+  },
+  "engines": { "vscode": "^1.75.0" },
+  "categories": ["Programming Languages"],
+  "activationEvents": [
+    "onLanguage:deutschpython",
+    "onLanguage:lateinpython"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "deutschpython",
+        "aliases": ["Deutsch-Python", "deutschpython"],
+        "extensions": [".dpy"],
+        "configuration": "./language-configuration.deutsch.json"
+      },
+      {
+        "id": "lateinpython",
+        "aliases": ["Latein-Python", "lateinpython", "Lingua Latina Python"],
+        "extensions": [".lpy"],
+        "configuration": "./language-configuration.latein.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "deutschpython",
+        "scopeName": "source.dpy",
+        "path": "./syntaxes/deutschpython.tmLanguage.json"
+      },
+      {
+        "language": "lateinpython",
+        "scopeName": "source.lpy",
+        "path": "./syntaxes/lateinpython.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "bilingualpython.ausfuehren",
+        "title": "Bilingual-Python: Datei ausführen",
+        "icon": "$(play)"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "bilingualpython.ausfuehren",
+          "when": "resourceLangId == deutschpython || resourceLangId == lateinpython",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}

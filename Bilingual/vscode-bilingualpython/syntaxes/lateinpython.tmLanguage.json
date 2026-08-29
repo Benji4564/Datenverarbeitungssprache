@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Latein-Python",
+  "scopeName": "source.lpy",
+  "patterns": [
+    { "include": "#kommentare" },
+    { "include": "#zeichenketten" },
+    { "include": "#dekoratoren" },
+    { "include": "#klassendefinition" },
+    { "include": "#funktionsdefinition" },
+    { "include": "#schluesselwoerter" },
+    { "include": "#konstanten" },
+    { "include": "#zahlen" },
+    { "include": "#eingebaute-funktionen" },
+    { "include": "#selbst" },
+    { "include": "#funktionsaufruf" },
+    { "include": "#attributzugriff" },
+    { "include": "#zuweisung" },
+    { "include": "#operatoren" }
+  ],
+  "repository": {
+    "kommentare": {
+      "patterns": [
+        { "name": "comment.line.number-sign.lpy", "match": "#.*$" }
+      ]
+    },
+    "zeichenketten": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.lpy",
+          "begin": "([rRbBuUfF]{0,2})(\"\"\")",
+          "end": "\"\"\"",
+          "beginCaptures": { "1": { "name": "storage.type.string.lpy" } },
+          "patterns": [
+            { "include": "#format-platzhalter" },
+            { "name": "constant.character.escape.lpy", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.single.lpy",
+          "begin": "([rRbBuUfF]{0,2})(''')",
+          "end": "'''",
+          "beginCaptures": { "1": { "name": "storage.type.string.lpy" } },
+          "patterns": [
+            { "include": "#format-platzhalter" },
+            { "name": "constant.character.escape.lpy", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.double.lpy",
+          "begin": "([rRbBuUfF]{0,2})(\")",
+          "end": "\"",
+          "beginCaptures": { "1": { "name": "storage.type.string.lpy" } },
+          "patterns": [
+            { "include": "#format-platzhalter" },
+            { "name": "constant.character.escape.lpy", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.single.lpy",
+          "begin": "([rRbBuUfF]{0,2})(')",
+          "end": "'",
+          "beginCaptures": { "1": { "name": "storage.type.string.lpy" } },
+          "patterns": [
+            { "include": "#format-platzhalter" },
+            { "name": "constant.character.escape.lpy", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "format-platzhalter": {
+      "patterns": [
+        {
+          "name": "meta.embedded.expression.lpy",
+          "match": "(\\{)([^{}]*)(\\})",
+          "captures": {
+            "1": { "name": "punctuation.section.embedded.begin.lpy" },
+            "2": { "name": "source.lpy.embedded" },
+            "3": { "name": "punctuation.section.embedded.end.lpy" }
+          }
+        }
+      ]
+    },
+    "zahlen": {
+      "patterns": [
+        { "name": "constant.numeric.hex.lpy", "match": "\\b0[xX][0-9a-fA-F_]+\\b" },
+        { "name": "constant.numeric.bin.lpy", "match": "\\b0[bB][01_]+\\b" },
+        { "name": "constant.numeric.oct.lpy", "match": "\\b0[oO][0-7_]+\\b" },
+        {
+          "name": "constant.numeric.float.lpy",
+          "match": "\\b\\d[\\d_]*\\.\\d[\\d_]*([eE][+-]?\\d+)?[jJ]?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.lpy",
+          "match": "\\b\\d[\\d_]*([eE][+-]?\\d+)?[jJ]?\\b"
+        }
+      ]
+    },
+    "konstanten": {
+      "patterns": [
+        { "name": "constant.language.lpy", "match": "\\b(Verum|Falsum|Nihil)\\b" }
+      ]
+    },
+    "dekoratoren": {
+      "patterns": [
+        {
+          "match": "^\\s*(@)([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*)",
+          "captures": {
+            "1": { "name": "punctuation.definition.decorator.lpy" },
+            "2": { "name": "entity.name.function.decorator.lpy" }
+          }
+        }
+      ]
+    },
+    "schluesselwoerter": {
+      "patterns": [
+        {
+          "name": "keyword.control.lpy",
+          "match": "\\b(si|alitersi|aliter|dum|rumpe|perge|tenta|excipe|denique|iace|redde|transi|cede|cum|importa|ex|ut|exterius|global|lambda|dele|assere|simul|exspecta|pro|in)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.lpy",
+          "match": "\\b(et|vel|non|est)\\b"
+        }
+      ]
+    },
+    "eingebaute-funktionen": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.lpy",
+          "match": "\\b(scribe|longitudo|intervallum|posce|catena|integer|fractio|album|lexicon|fasciculus|copia|aperi|genus|maximum|minimum|summa|ordinata|enumera|iunge|print|len|range|input|str|int|float|list|dict|tuple|set|open|type|max|min|sum|sorted|enumerate|zip|isinstance|issubclass|super|repr|hasattr|getattr|setattr)\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "selbst": {
+      "patterns": [
+        { "name": "variable.language.self.lpy", "match": "\\b(se|self|cls)\\b" }
+      ]
+    },
+    "klassendefinition": {
+      "begin": "\\b(classis)\\s+([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)",
+      "end": "(?=:)",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.lpy" },
+        "2": { "name": "entity.name.class.lpy" }
+      },
+      "patterns": [
+        {
+          "match": "([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)",
+          "name": "entity.other.inherited-class.lpy"
+        },
+        { "match": "[(),]", "name": "punctuation.lpy" }
+      ]
+    },
+    "funktionsdefinition": {
+      "begin": "\\b(functio)\\s+([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\\s*(\\()",
+      "end": "(\\))\\s*(->\\s*[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.\\[\\], ]*)?\\s*(?=:)",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.lpy" },
+        "2": { "name": "entity.name.function.lpy" },
+        "3": { "name": "punctuation.lpy" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.lpy" },
+        "2": { "name": "storage.type.annotation.lpy" }
+      },
+      "patterns": [
+        { "include": "#selbst" },
+        {
+          "match": "([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\\s*[,)=:])",
+          "name": "variable.parameter.lpy"
+        },
+        { "match": "=", "name": "keyword.operator.assignment.lpy" },
+        { "match": ":", "name": "punctuation.lpy" },
+        { "match": ",", "name": "punctuation.lpy" },
+        { "include": "#zeichenketten" },
+        { "include": "#zahlen" }
+      ]
+    },
+    "funktionsaufruf": {
+      "patterns": [
+        {
+          "match": "\\b([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\\s*\\()",
+          "name": "entity.name.function.call.lpy"
+        }
+      ]
+    },
+    "attributzugriff": {
+      "patterns": [
+        {
+          "match": "(\\.)([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\\s*\\()",
+          "captures": {
+            "1": { "name": "punctuation.accessor.lpy" },
+            "2": { "name": "entity.name.function.member.lpy" }
+          }
+        },
+        {
+          "match": "(\\.)([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)",
+          "captures": {
+            "1": { "name": "punctuation.accessor.lpy" },
+            "2": { "name": "variable.other.property.lpy" }
+          }
+        }
+      ]
+    },
+    "zuweisung": {
+      "patterns": [
+        {
+          "match": "^\\s*((?:[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\\s*,\\s*)*[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\\s*(:[^=]+)?(=)(?!=)",
+          "captures": {
+            "1": { "name": "variable.other.assigned.lpy" },
+            "2": { "name": "storage.type.annotation.lpy" },
+            "3": { "name": "keyword.operator.assignment.lpy" }
+          }
+        },
+        {
+          "match": "\\b([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\\s*(\\+=|-=|\\*=|/=|//=|%=|\\*\\*=)",
+          "captures": {
+            "1": { "name": "variable.other.assigned.lpy" },
+            "2": { "name": "keyword.operator.assignment.lpy" }
+          }
+        }
+      ]
+    },
+    "operatoren": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arithmetic.lpy",
+          "match": "\\*\\*|//|[-+*/%@]"
+        },
+        {
+          "name": "keyword.operator.comparison.lpy",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.assignment.lpy",
+          "match": "\\+=|-=|\\*=|/=|//=|%=|\\*\\*=|="
+        },
+        {
+          "name": "punctuation.separator.lpy",
+          "match": "[,:;]"
+        },
+        {
+          "name": "punctuation.bracket.lpy",
+          "match": "[\\[\\]{}()]"
+        }
+      ]
+    }
+  }
+}
