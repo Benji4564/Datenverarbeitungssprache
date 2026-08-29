@@ -10,16 +10,34 @@ englischen Originale erwartet (z. B. ``deutschpython.stdlib.mathematik.pi
 is math.pi``).
 
 Verfügbare Module:
-    mathematik   -> math
-    zufall       -> random
-    zeit         -> time
-    datum        -> datetime
+    mathematik     -> math
+    zufall         -> random
+    zeit           -> time
+    datum          -> datetime
     betriebssystem -> os
-    pfad         -> os.path
-    system       -> sys
-    json         -> json (nur deutsche Funktionsnamen)
-    sammlungen   -> collections
-    statistik    -> statistics
-    text         -> re
-    funktional   -> itertools + functools
+    pfad           -> os.path
+    pfadobjekte    -> pathlib
+    system         -> sys
+    json           -> json (nur deutsche Funktionsnamen)
+    csv            -> csv (nur deutsche Funktionsnamen)
+    sammlungen     -> collections
+    statistik      -> statistics
+    text           -> re
+    funktional     -> itertools + functools
+    dateiverwaltung -> shutil
+    prozess        -> subprocess
+    nebenlaeufigkeit -> threading
+    protokoll      -> logging
+    argumentanalyse -> argparse
+    pruefsummen    -> hashlib
+    kennung        -> uuid
+    aufzaehlung    -> enum
+    datenklassen   -> dataclasses
+    kopie          -> copy
+
+Wichtig: Nur die wichtigsten Einstiegspunkte jedes Moduls (Top-Level-
+Funktionen, Konstanten, die zentrale(n) Klasse(n)) sind übersetzt. Methoden
+auf den zurückgegebenen Objekten (z. B. `Argumentparser().add_argument(...)`
+oder `Faden().start()`) bleiben auf Englisch, weil sie direkt von der
+jeweiligen Bibliothek stammen.
 """

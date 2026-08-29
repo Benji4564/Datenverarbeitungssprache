@@ -62,17 +62,32 @@ drucke(datum.heute())
 | `datum` | `datetime` | `Datum`, `Uhrzeit`, `Zeitstempel`, `Zeitspanne`, `heute`, `jetzt` |
 | `betriebssystem` | `os` | `aktuelles_verzeichnis`, `erstelle_verzeichnis`, `umgebung` |
 | `pfad` | `os.path` | `existiert`, `verbinde`, `basisname`, `ist_datei` |
+| `pfadobjekte` | `pathlib` | `Pfad`, `heimatverzeichnis`, `aktuelles_verzeichnis` |
 | `system` | `sys` | `argumente`, `suchpfad`, `beenden`, `plattform` |
 | `json` | `json` | `lade`, `speichere`, `lade_zeichenkette`, `speichere_als_zeichenkette` |
+| `csv` | `csv` | `leser`, `schreiber`, `Wörterbuchleser`, `Wörterbuchschreiber` |
 | `sammlungen` | `collections` | `Zähler`, `Schlange`, `GeordnetesWörterbuch`, `benannter_tupel` |
 | `statistik` | `statistics` | `mittelwert`, `median`, `standardabweichung`, `varianz` |
 | `text` | `re` | `suche`, `passt`, `finde_alle`, `ersetze`, `teile`, `kompiliere` |
 | `funktional` | `itertools` + `functools` | `reduziere`, `kombinationen`, `permutationen`, `kette` |
+| `dateiverwaltung` | `shutil` | `kopiere`, `kopiere_baum`, `verschiebe`, `lösche_baum` |
+| `prozess` | `subprocess` | `starte`, `öffne_prozess`, `Prozessfehler` |
+| `nebenlaeufigkeit` | `threading` | `Faden`, `Sperre`, `Ereignis` |
+| `protokoll` | `logging` | `hole_protokollierer`, `konfiguriere`, `FEHLER`, `WARNUNG` |
+| `argumentanalyse` | `argparse` | `Argumentparser`, `Namensraum` |
+| `pruefsummen` | `hashlib` | `sha256`, `md5`, `neue_prüfsumme` |
+| `kennung` | `uuid` | `ID`, `zufalls_id`, `namensbasierte_id` |
+| `aufzaehlung` | `enum` | `Aufzählung`, `Ganzzahlaufzählung`, `automatisch` |
+| `datenklassen` | `dataclasses` | `datenklasse`, `feld`, `ist_datenklasse`, `zu_wörterbuch` |
+| `kopie` | `copy` | `flache_kopie`, `tiefe_kopie` |
 
-Siehe `beispiele/standardbibliothek.dpy` für ein Beispiel. Weil hinter jedem
-deutschen Namen exakt dasselbe stdlib-Objekt steckt, funktioniert alles
-(Fehlerklassen, Rückgabetypen, Performance) genau wie im Original –
-nur eben unter deutschem Namen ansprechbar.
+Siehe `beispiele/standardbibliothek.dpy` und `beispiele/mehr_stdlib.dpy` für
+Beispiele. Weil hinter jedem deutschen Namen exakt dasselbe stdlib-Objekt
+steckt, funktioniert alles (Fehlerklassen, Rückgabetypen, Performance) genau
+wie im Original – nur eben unter deutschem Namen ansprechbar. Beachte:
+nur die wichtigsten Einstiegspunkte jedes Moduls sind übersetzt, Methoden
+auf den zurückgegebenen Objekten (z. B. `Argumentparser().add_argument(...)`)
+bleiben auf Englisch.
 
 ## Installation & Nutzung
 
