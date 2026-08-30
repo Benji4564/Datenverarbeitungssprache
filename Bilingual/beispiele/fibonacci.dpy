@@ -1,0 +1,11 @@
+funktion fibonacci(n):
+    a, b = 0, 1
+    für _ in range(n):
+        liefere a
+        a, b = b, a + b
+
+
+wenn __name__ == "__main__":
+    für zahl in fibonacci(10):
+        print(zahl, end=" ")
+    print()
