@@ -1,4 +1,0 @@
-.vscodeignore
-*.vsix
-node_modules/**
-.git/**
